@@ -36,7 +36,8 @@ export function Hero() {
   const activeSnippet = heroSnippets ? heroSnippets[snippetIndex] : null;
 
   return (
-    <section id="hero" className="flex flex-col lg:flex-row items-center gap-12 min-h-[calc(100vh-80px)] pt-10 pb-20">
+    <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center py-10">
+      <div className="max-w-5xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12">
       
       {/* Left Text Content */}
       <div className="flex-1 space-y-8 z-10 w-full">
@@ -148,6 +149,7 @@ export function Hero() {
             </div>
           </div>
         </ScrollReveal>
+      </div>
       </div>
     </section>
   );
