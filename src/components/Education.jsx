@@ -1,15 +1,19 @@
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import educationData from '../data/education.json';
+import { useLanguage } from '../hooks/useLanguage';
 import { formatDate } from '../utils/dateFormatter';
 import { GraduationCap } from 'lucide-react';
 
 export function Education() {
+  const { content, lang } = useLanguage();
+  const educationData = content.education;
   return (
     <section id="education" className="py-20 relative">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-display font-bold mb-12">Education</h2>
+          <h2 className="text-3xl font-display font-bold mb-12">
+            {lang === 'en' ? 'Education' : 'Formação Académica'}
+          </h2>
         </ScrollReveal>
 
         <div className="relative border-l-2 border-outline/30 ml-3 md:ml-0 space-y-12">

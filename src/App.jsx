@@ -9,12 +9,15 @@ import { Education } from './components/Education';
 import { Certifications } from './components/Certifications';
 import { Projects } from './components/Projects';
 import { Footer } from './components/Footer';
+import { Analytics } from './components/Analytics';
 
 function App() {
   const { isDark, toggleTheme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background text-on-surface font-sans transition-colors duration-300 relative selection:bg-primary/30">
+      <Analytics />
+      
       {/* Background Grid */}
       <div className="bg-grid absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none"></div>
 

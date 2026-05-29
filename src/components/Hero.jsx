@@ -1,14 +1,28 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import personalData from '../data/personal.json';
+import { useLanguage } from '../hooks/useLanguage';
+import { useTypingEffect } from '../hooks/useTypingEffect';
 import { ScrollReveal } from './ScrollReveal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Hero() {
-  const { name, title, bio, heroSnippets } = personalData;
+  const { content, lang } = useLanguage();
+  const { name, title, bio, heroSnippets } = content.personal;
   const [snippetIndex, setSnippetIndex] = useState(0);
+  const [showName, setShowName] = useState(false);
+  const [showRest, setShowRest] = useState(false);
 
   const firstName = name.split(' ')[0];
   const lastName = name.split(' ').slice(1).join(' ');
+
+  // The terminal prompt command to type
+  const command = '> whoami';
+
+  // Type the command, then trigger showing the name
+  const { displayText, isDone: commandDone } = useTypingEffect(command, 65, 600, () => {
+    setTimeout(() => setShowName(true), 300);
+    setTimeout(() => setShowRest(true), 900);
+  });
 
   // Rotate snippets every 5 seconds
   useEffect(() => {
@@ -32,37 +46,69 @@ export function Hero() {
           </div>
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-on-surface leading-tight tracking-tight">
-            {firstName} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              {lastName}.
-            </span>
-          </h1>
-        </ScrollReveal>
-        
-        <ScrollReveal delay={0.2}>
-          <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-            {bio}
-          </p>
-        </ScrollReveal>
-        
-        <ScrollReveal delay={0.3}>
-          <div className="flex flex-wrap gap-4 pt-4">
-            <a 
-              href="#projects"
-              className="px-8 py-4 bg-primary text-surface font-display text-sm font-medium rounded-lg hover:opacity-90 hover:shadow-lg hover:-translate-y-1 hover:shadow-primary/20 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background outline-none"
-            >
-              View Projects <ArrowRight size={18} />
-            </a>
-            <a 
-              href="#contact"
-              className="px-8 py-4 border border-outline-variant text-primary font-display text-sm font-medium rounded-lg hover:bg-surface-dim hover:-translate-y-1 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background outline-none"
-            >
-              Contact Me
-            </a>
+        {/* Terminal Prompt + Name Reveal */}
+        <div className="space-y-2">
+          {/* Step 1: Typing the command */}
+          <div className="font-display text-base text-on-surface-variant/60 flex items-center gap-1 min-h-[1.5rem]">
+            <span>{displayText}</span>
+            {!commandDone && (
+              <span className="inline-block w-[2px] h-[1.1em] bg-primary animate-pulse ml-0.5 align-middle" />
+            )}
           </div>
-        </ScrollReveal>
+
+          {/* Step 2: Name reveal */}
+          <AnimatePresence>
+            {showName && (
+              <motion.h1
+                className="font-display text-5xl md:text-7xl font-bold text-on-surface leading-tight tracking-tight"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+              >
+                {firstName} <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                  {lastName}.
+                </span>
+              </motion.h1>
+            )}
+          </AnimatePresence>
+        </div>
+        
+        {/* Step 3: Bio and buttons fade in after name */}
+        <AnimatePresence>
+          {showRest && (
+            <>
+              <motion.p
+                className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+              >
+                {bio}
+              </motion.p>
+
+              <motion.div
+                className="flex flex-wrap gap-4 pt-4"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+              >
+                <a 
+                  href="#projects"
+                  className="px-8 py-4 bg-primary text-surface font-display text-sm font-medium rounded-lg hover:opacity-90 hover:shadow-lg hover:-translate-y-1 hover:shadow-primary/20 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background outline-none"
+                >
+                  {lang === 'en' ? 'View Projects' : 'Ver Projetos'} <ArrowRight size={18} />
+                </a>
+                <a 
+                  href="#contact"
+                  className="px-8 py-4 border border-outline-variant text-primary font-display text-sm font-medium rounded-lg hover:bg-surface-dim hover:-translate-y-1 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background outline-none"
+                >
+                  {lang === 'en' ? 'Contact Me' : 'Contactar-me'}
+                </a>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Right Graphic Content */}

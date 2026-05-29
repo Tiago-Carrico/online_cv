@@ -1,13 +1,17 @@
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import skillsData from '../data/skills.json';
+import { useLanguage } from '../hooks/useLanguage';
 
 export function Skills() {
+  const { content, lang } = useLanguage();
+  const skillsData = content.skills;
   return (
     <section id="skills" className="py-20 relative">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-display font-bold mb-12">Skills & Tech Stack</h2>
+          <h2 className="text-3xl font-display font-bold mb-12">
+            {lang === 'en' ? 'Skills & Tech Stack' : 'Competências & Tecnologias'}
+          </h2>
         </ScrollReveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

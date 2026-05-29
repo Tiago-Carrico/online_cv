@@ -1,5 +1,5 @@
 import React from 'react';
-import personalData from '../data/personal.json';
+import { useLanguage } from '../hooks/useLanguage';
 import { Github, Linkedin, Mail, Twitter, Globe } from 'lucide-react';
 
 const iconMap = {
@@ -10,6 +10,8 @@ const iconMap = {
 };
 
 export function Footer() {
+  const { content, lang } = useLanguage();
+  const personalData = content.personal;
   return (
     <footer className="py-12 border-t border-outline/20 bg-surface text-center">
       <div className="max-w-5xl mx-auto px-6">
@@ -43,7 +45,7 @@ export function Footer() {
         </div>
         
         <p className="text-sm font-mono text-on-surface-variant opacity-70">
-          &copy; {new Date().getFullYear()} {personalData.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {personalData.name}. {lang === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
         </p>
       </div>
     </footer>

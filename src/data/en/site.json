@@ -1,0 +1,13 @@
+{
+  "title": "Alex Morgan — Software Engineer",
+  "description": "Personal portfolio & CV",
+  "lang": "en",
+  "dateLocale": "pt-PT",
+  "ogImage": "/og.webp",
+  "analytics": {
+    "enabled": false,
+    "provider": "plausible",
+    "domain": "yourdomain.com",
+    "scriptUrl": "https://plausible.io/js/script.js"
+  }
+}

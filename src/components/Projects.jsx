@@ -1,14 +1,18 @@
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import projectsData from '../data/projects.json';
+import { useLanguage } from '../hooks/useLanguage';
 import { Github, ExternalLink } from 'lucide-react';
 
 export function Projects() {
+  const { content, lang } = useLanguage();
+  const projectsData = content.projects;
   return (
     <section id="projects" className="py-20 relative">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-display font-bold mb-12">Projects</h2>
+          <h2 className="text-3xl font-display font-bold mb-12">
+            {lang === 'en' ? 'Projects' : 'Projetos'}
+          </h2>
         </ScrollReveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -47,7 +51,7 @@ export function Projects() {
                       className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-variant transition-colors"
                     >
                       <Github size={16} />
-                      View Repository <ExternalLink size={14} />
+                      {lang === 'en' ? 'View Repository' : 'Ver Repositório'} <ExternalLink size={14} />
                     </a>
                   )}
                 </div>

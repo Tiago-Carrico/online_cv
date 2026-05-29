@@ -374,15 +374,13 @@ The header will contain a sticky/fixed nav bar with anchor links to each section
 
 ## 9 · Suggested Future Improvements
 
-1. **Animated hero / terminal intro** — A brief "typing" animation in a mock terminal in the hero area (e.g., `> whoami → Your Name`). Adds developer personality.
+1. ✅ **Animated hero / terminal intro** — A brief "typing" animation in a mock terminal in the hero area (e.g., `> whoami → Your Name`). Adds developer personality.
 
 2. **Blog / Writing section** — A simple list of links to external posts (Medium, Dev.to, personal blog). Demonstrates thought leadership.
 
-3. **Analytics** — Optional privacy-respecting analytics (e.g., Plausible or Umami, self-hosted) via a toggle in `site.json`.
+3. ✅ **Analytics** — Optional privacy-respecting analytics (e.g., Plausible or Umami, self-hosted) via a toggle in `site.json`.
 
 4. **Print stylesheet** — A `@media print` stylesheet so the page itself prints cleanly as a backup CV.
-
-5. **i18n support** — Extend JSON data with locale keys (e.g., `personal.en.json`, `personal.pt.json`) and add a language switcher.
 
 ---
 

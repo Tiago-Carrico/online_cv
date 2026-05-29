@@ -1,15 +1,19 @@
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import certificationsData from '../data/certifications.json';
+import { useLanguage } from '../hooks/useLanguage';
 import { formatDate } from '../utils/dateFormatter';
 import { Award, ExternalLink } from 'lucide-react';
 
 export function Certifications() {
+  const { content, lang } = useLanguage();
+  const certificationsData = content.certifications;
   return (
     <section id="certifications" className="py-20 relative bg-surface-dim/30">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl font-display font-bold mb-12">Certifications</h2>
+          <h2 className="text-3xl font-display font-bold mb-12">
+            {lang === 'en' ? 'Certifications' : 'Certificações'}
+          </h2>
         </ScrollReveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -30,7 +34,7 @@ export function Certifications() {
                 
                 <div className="mt-auto pt-4 flex items-center justify-between border-t border-outline/20">
                   <span className="text-xs font-mono text-on-surface-variant">
-                    Issued: {formatDate(cert.date)}
+                    {lang === 'en' ? 'Issued' : 'Emitido'}: {formatDate(cert.date)}
                   </span>
                   
                   {cert.url && (
@@ -40,7 +44,7 @@ export function Certifications() {
                       rel="noopener noreferrer"
                       className="text-xs font-medium text-primary flex items-center gap-1 hover:underline"
                     >
-                      Verify <ExternalLink size={12} />
+                      {lang === 'en' ? 'Verify' : 'Verificar'} <ExternalLink size={12} />
                     </a>
                   )}
                 </div>
