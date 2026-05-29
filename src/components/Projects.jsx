@@ -1,0 +1,61 @@
+import React from 'react';
+import { ScrollReveal } from './ScrollReveal';
+import projectsData from '../data/projects.json';
+import { Github, ExternalLink } from 'lucide-react';
+
+export function Projects() {
+  return (
+    <section id="projects" className="py-20 relative">
+      <div className="max-w-5xl mx-auto px-6">
+        <ScrollReveal>
+          <h2 className="text-3xl font-display font-bold mb-12">Projects</h2>
+        </ScrollReveal>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          {projectsData.map((project, idx) => (
+            <ScrollReveal key={idx} delay={idx * 0.1}>
+              <div className="glass-panel overflow-hidden rounded-2xl flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300">
+                {project.image && (
+                  <div className="h-48 overflow-hidden bg-surface-dim">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                    />
+                  </div>
+                )}
+                
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold font-display mb-2">{project.title}</h3>
+                  <p className="text-on-surface-variant mb-6 flex-grow">{project.description}</p>
+                  
+                  {project.tags && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className="px-2 py-1 text-xs font-mono font-medium rounded-md bg-secondary/10 text-secondary border border-secondary/20">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {project.link && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-variant transition-colors"
+                    >
+                      <Github size={16} />
+                      View Repository <ExternalLink size={14} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

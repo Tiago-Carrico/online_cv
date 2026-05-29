@@ -1,0 +1,27 @@
+{
+  "name": "Alex Morgan",
+  "title": "Software Engineer & Architect",
+  "email": "alex@example.com",
+  "location": "San Francisco, CA",
+  "photo": "/photo.webp",
+  "showPhoto": false,
+  "bio": "I'm a software engineer with over 6 years of experience specializing in building exceptional digital experiences. I thrive in environments where I can tackle complex problems, collaborate with talented teams, and continuously learn new technologies.",
+  "metrics": [
+    { "value": "10+", "label": "Years Experience" },
+    { "value": "5M+", "label": "Active Users Scaled" }
+  ],
+  "heroSnippets": [
+    {
+      "language": "Go",
+      "code": "func (s *Server) Handle(ctx context.Context, req Request) (Response, error) {\n    span := trace.StartSpan(ctx)\n    defer span.End()\n\n    res, err := s.router.Route(req)\n    if err != nil {\n        return nil, s.errHandler(err)\n    }\n    return res, nil\n}"
+    },
+    {
+      "language": "TypeScript",
+      "code": "const buildAwesomeThings = () => {\n  while(engineer.coffeeLevel > 0) {\n    engineer.writeCode();\n    engineer.solveProblems();\n  }\n};"
+    }
+  ],
+  "socials": [
+    { "label": "GitHub", "url": "https://github.com/", "icon": "github" },
+    { "label": "LinkedIn", "url": "https://linkedin.com/", "icon": "linkedin" }
+  ]
+}

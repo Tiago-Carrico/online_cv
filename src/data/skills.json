@@ -1,0 +1,10 @@
+[
+  {
+    "category": "Frontend",
+    "skills": ["React", "JavaScript", "HTML", "CSS", "Vite"]
+  },
+  {
+    "category": "Tools",
+    "skills": ["Git", "GitHub", "Figma"]
+  }
+]
