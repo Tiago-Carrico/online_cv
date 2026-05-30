@@ -22,7 +22,7 @@ export function Experience() {
               <div className="relative md:pl-10 pl-6">
                 {/* Timeline dot */}
                 <div className="absolute w-6 h-6 bg-surface border-4 border-primary rounded-full -left-3 md:-left-[13px] top-1"></div>
-                
+
                 <div className="glass-panel p-6 rounded-2xl">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                     <div>
@@ -36,11 +36,19 @@ export function Experience() {
                       {formatDate(job.startDate)} — {job.endDate === "Present" || job.endDate === null ? "Present" : formatDate(job.endDate)}
                     </div>
                   </div>
-                  
+
                   {job.description && (
-                    <p className="text-on-surface-variant leading-relaxed">
-                      {job.description}
-                    </p>
+                    Array.isArray(job.description) ? (
+                      <ul className="list-disc list-inside text-on-surface-variant leading-relaxed space-y-2">
+                        {job.description.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-on-surface-variant leading-relaxed">
+                        {job.description}
+                      </p>
+                    )
                   )}
                 </div>
               </div>

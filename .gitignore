@@ -22,3 +22,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# notes and such
+/plans
+/ai_examples
+

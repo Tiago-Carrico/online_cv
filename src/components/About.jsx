@@ -11,7 +11,7 @@ export function About() {
       <ScrollReveal>
         <div className="flex items-center gap-4">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-on-surface tracking-tight">
-            {lang === 'en' ? 'About_Me' : 'Sobre_Mim'}
+            {lang === 'en' ? 'About Me' : 'Sobre Mim'}
           </h2>
           <div className="h-px bg-outline-variant/50 flex-grow"></div>
         </div>

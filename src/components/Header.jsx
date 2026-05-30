@@ -7,24 +7,24 @@ export function Header() {
   const { isDark, toggleTheme } = useTheme();
   const { lang, toggleLanguage, content } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const siteData = content.site;
-  const shortTitle = siteData.title.split('—')[0].trim() || 'Portfolio';
+  const shortTitle = siteData.title.split('—')[0].trim() || '';
 
   return (
-    <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300">
+    <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blurPortfolio-xl border-b border-outline-variant/30 transition-all duration-300">
       <div className="flex justify-between items-center h-20 max-w-[1200px] mx-auto px-6 md:px-12">
         <a href="#" className="font-display text-xl font-bold text-primary tracking-tight">
           {shortTitle}
         </a>
-        
+
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="#about" className="text-on-surface-variant hover:text-primary transition-colors font-display text-sm font-medium">
             {lang === 'en' ? 'About' : 'Sobre'}
           </a>
           <a href="#skills" className="text-on-surface-variant hover:text-primary transition-colors font-display text-sm font-medium">
-            Skills
+            {lang === 'en' ? 'Skills' : 'Competências'}
           </a>
           <a href="#experience" className="text-on-surface-variant hover:text-primary transition-colors font-display text-sm font-medium">
             {lang === 'en' ? 'Experience' : 'Experiência'}
@@ -33,34 +33,34 @@ export function Header() {
             {lang === 'en' ? 'Projects' : 'Projetos'}
           </a>
         </div>
-        
+
         {/* Actions */}
         <div className="flex items-center gap-4 z-50">
-          <button 
+          <button
             onClick={toggleLanguage}
             className="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-dim font-display text-sm font-bold uppercase"
             aria-label="Toggle Language"
           >
             {lang}
           </button>
-          
-          <button 
+
+          <button
             onClick={toggleTheme}
             className="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-dim focus-visible:ring-2 focus-visible:ring-primary outline-none"
             aria-label="Toggle Theme"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          
-          <a 
-            href="/cv.pdf" 
+
+          <a
+            href="/cv.pdf"
             target="_blank"
             className="hidden md:block px-4 py-2 border border-outline-variant/50 text-primary font-display text-sm font-medium rounded hover:bg-surface-dim transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none"
           >
             {lang === 'en' ? 'Resume' : 'Currículo'}
           </a>
-          
-          <button 
+
+          <button
             className="md:hidden text-on-surface-variant hover:text-primary p-2 focus-visible:ring-2 focus-visible:ring-primary outline-none rounded"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
@@ -86,8 +86,8 @@ export function Header() {
           <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-on-surface hover:text-primary transition-colors font-display text-lg font-medium py-2">
             {lang === 'en' ? 'Projects' : 'Projetos'}
           </a>
-          <a 
-            href="/cv.pdf" 
+          <a
+            href="/cv.pdf"
             target="_blank"
             className="w-full text-center py-3 mt-2 border border-primary text-primary font-display font-medium rounded hover:bg-primary/10 transition-colors"
           >

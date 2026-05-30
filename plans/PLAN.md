@@ -382,6 +382,11 @@ The header will contain a sticky/fixed nav bar with anchor links to each section
 
 4. **Print stylesheet** — A `@media print` stylesheet so the page itself prints cleanly as a backup CV.
 
+5. **Change code snippets in personal.json to be more in-line with my experience** - Use languages I am more attuned to, such as Python, Javascript, Java, Terraform, etc. (mudar no personal.json)
+
+6. **Check what site.json does**: just check what it does and why it is relevant. plus check why the provider is there, and 
+
+7. **Add og.webp image** - we seem to have it defined in the site.json, but can't find any og.webp image
 ---
 
 ## 10 · Custom Domain (free options)

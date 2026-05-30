@@ -1,14 +1,20 @@
 {
-  "name": "Alex Morgan",
-  "title": "Software Engineer & Architect",
-  "email": "alex@example.com",
-  "location": "San Francisco, CA",
+  "name": "Tiago Carriço",
+  "title": "Cloud and DevOps Engineer",
+  "email": "tiagomscarrico@gmail.com",
+  "location": "Portugal, PT",
   "photo": "/photo.webp",
   "showPhoto": false,
-  "bio": "I'm a software engineer with over 6 years of experience specializing in building exceptional digital experiences. I thrive in environments where I can tackle complex problems, collaborate with talented teams, and continuously learn new technologies.",
+  "bio": "I'm a software engineer specializing in building the foundations for digital experiences. I thrive in environments where I can tackle complex challenges, collaborate with talented teams, and continuously improve my skills and learn new technologies.",
   "metrics": [
-    { "value": "10+", "label": "Years Experience" },
-    { "value": "5M+", "label": "Active Users Scaled" }
+    {
+      "value": "1+",
+      "label": "Years Experience"
+    },
+    {
+      "value": "2M+",
+      "label": "Active Users Scaled"
+    }
   ],
   "heroSnippets": [
     {
@@ -21,7 +27,15 @@
     }
   ],
   "socials": [
-    { "label": "GitHub", "url": "https://github.com/", "icon": "github" },
-    { "label": "LinkedIn", "url": "https://linkedin.com/", "icon": "linkedin" }
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Tiago-Carrico",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/tiagocarriço/",
+      "icon": "linkedin"
+    }
   ]
 }
